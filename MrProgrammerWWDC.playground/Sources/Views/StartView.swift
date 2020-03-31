@@ -16,7 +16,7 @@ public class StartView: UIView {
     }
     
     private func setupView() {
-        self.backgroundColor = UIColor(named: "Background")
+        self.backgroundColor = Colors.backgroundColor
         
         setupBackgroundImage()
         setupTitleLabel()
