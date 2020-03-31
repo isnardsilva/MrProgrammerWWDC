@@ -6,6 +6,7 @@ public class TaskPageViewController: UIPageViewController {
     public let initialPage: Int = 0
     
     public let pageControl = UIPageControl()
+    public let goButton = UIButton()
     
 //    public var taskPageView: TaskPageView! {
 //        // Verificando se a View ja foi carregada
@@ -40,6 +41,7 @@ public class TaskPageViewController: UIPageViewController {
         self.setViewControllers([pages[initialPage]], direction: .forward, animated: false, completion: nil)
         
         self.setupPageControl()
+        self.setupGoButton()
     }
     
     private func setupPageControl() {
@@ -60,6 +62,34 @@ public class TaskPageViewController: UIPageViewController {
 //        self.pageControl.widthAnchor.constraint(equalTo: self.view.widthAnchor, constant: -20).isActive = true
 //        self.pageControl.heightAnchor.constraint(equalToConstant: 20).isActive = true
 //        self.pageControl.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+    }
+    
+    private func setupGoButton() {
+        self.goButton.isHidden = true
+        self.view.addSubview(self.goButton)
+        
+        
+        
+        self.goButton.setTitle("GO", for: .normal)
+        goButton.setTitleColor(.white, for: .normal)
+        goButton.titleLabel?.font = UIFont.systemFont(ofSize: 23, weight: .bold)
+        
+        self.goButton.setBackgroundImage(UIImage(named: "ButtonNormal"), for: .normal)
+        self.goButton.setBackgroundImage(UIImage(named: "ButtonPressed"), for: .highlighted)
+        
+        self.goButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.goButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.goButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 270)
+        ])
+        
+        self.goButton.addTarget(self, action: #selector(goGame), for: .touchUpInside)
+    }
+    
+    
+    // MARK: - Actions
+    @objc public func goGame() {
+        print("Go")
     }
 }
 
@@ -116,6 +146,9 @@ extension TaskPageViewController: UIPageViewControllerDelegate {
                 // Verificando se a transicao ocorreu para a ultima Page
                 if viewControllerIndex != (pages.count - 1) {
                     self.pageControl.isHidden = false
+                    self.goButton.isHidden = true
+                } else {
+                    self.goButton.isHidden = false
                 }
             }
         }
@@ -134,6 +167,9 @@ extension TaskPageViewController: UIPageViewControllerDelegate {
         if let nextViewController = pendingViewControllers.first {
             if nextViewController == pages.last! {
                 self.pageControl.isHidden = true
+//                self.goButton.isHidden = false
+            } else {
+                self.goButton.isHidden = true
             }
 //            else {
 //                self.pageControl.isHidden = false
