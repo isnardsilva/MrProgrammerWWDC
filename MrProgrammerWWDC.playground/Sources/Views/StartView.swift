@@ -80,5 +80,5 @@ public class StartView: UIView {
         
         self.startButton = button
     }
-
+    
 }
