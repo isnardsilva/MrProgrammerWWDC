@@ -1,7 +1,5 @@
 import UIKit
 
-import UIKit
-
 public class GoalViewController: UIViewController {
     // MARK: - Properties
     public var goalView: GoalView {

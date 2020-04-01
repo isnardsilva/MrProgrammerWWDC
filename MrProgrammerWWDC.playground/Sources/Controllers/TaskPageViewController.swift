@@ -90,6 +90,7 @@ public class TaskPageViewController: UIPageViewController {
     // MARK: - Actions
     @objc public func goGame() {
         print("Go")
+        self.navigationController?.pushViewController(GameViewController(), animated: true)
     }
 }
 

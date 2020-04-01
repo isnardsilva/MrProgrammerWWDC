@@ -98,7 +98,7 @@ public class GoalView: UIView {
 
         label.text = "🗓Tempo: 30 dias"
         label.font = UIFont.systemFont(ofSize: 19, weight: .bold)
-        label.textColor = .white
+        label.textColor = .green
         label.textAlignment = .center
 
         label.translatesAutoresizingMaskIntoConstraints = false
