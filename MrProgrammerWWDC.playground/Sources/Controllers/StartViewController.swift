@@ -19,7 +19,7 @@ public class StartViewController: UIViewController {
     
     // MARK: - Actions
     @objc private func startGame() {
-        print("StartGame")
+//        print("StartGame")
 //        self.navigationController?.pushViewController(MessageViewController(), animated: true)
         
         let taskPageViewController = TaskPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)

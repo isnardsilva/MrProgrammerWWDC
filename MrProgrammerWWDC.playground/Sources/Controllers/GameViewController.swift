@@ -208,7 +208,7 @@ extension GameViewController: UICollectionViewDelegate {
         }
         
         if goalsAtMoment == 0 {
-            print("Ganhou")
+//            print("Ganhou")
             
             self.timer!.invalidate()
             self.timer = nil

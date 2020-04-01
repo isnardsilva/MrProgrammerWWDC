@@ -39,9 +39,9 @@ public class GameView: UIView {
         
         hdView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            hdView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 0),
-            hdView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
-            hdView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40),
+            hdView.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
+            hdView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 45),
+            hdView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -45),
             hdView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.24)
         ])
         
