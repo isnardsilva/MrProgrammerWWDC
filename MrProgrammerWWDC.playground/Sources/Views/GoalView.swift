@@ -6,6 +6,7 @@ public class GoalView: UIView {
     public weak var messageLabel: UILabel!
     public weak var goalCollectionView: UICollectionView!
     public weak var timeLabel: UILabel!
+    public weak var tutorialAlert: TutorialAlert!
 //    public weak var goButton: UIButton!
     
     public override init(frame: CGRect) {
@@ -25,6 +26,7 @@ public class GoalView: UIView {
         setupMessageLabel()
         setupGoalCollectionView()
         setupTimeMessage()
+        setupTutorialAlert()
 //        setupGoButton()
     }
     
@@ -160,4 +162,31 @@ public class GoalView: UIView {
 //
 //        self.goButton = button
 //    }
+    
+    public func hideOtherElementsForTheTutorial(hidden: Bool, selectedCell: UICollectionViewCell) {
+        let newAlpha: CGFloat = (hidden) ? 0.05 : 1.0
+        
+        self.titleLabel.alpha = newAlpha
+        self.messageLabel.alpha = newAlpha
+        self.timeLabel.alpha = newAlpha
+        
+        
+        for cell in goalCollectionView.visibleCells {
+            if cell != selectedCell {
+                cell.alpha = newAlpha
+            }
+        }
+        
+        self.tutorialAlert.isHidden = !hidden
+        self.goalCollectionView.isUserInteractionEnabled = !hidden
+    }
+    
+    
+    
+    private func setupTutorialAlert() {
+        let ttAlert = TutorialAlert()
+        self.addSubview(ttAlert)
+        
+        self.tutorialAlert = ttAlert
+    }
 }

@@ -6,12 +6,21 @@ public class GoalViewController: UIViewController {
         return (view as! GoalView)
     }
     
+    public var selectedCell: UICollectionViewCell?
+    
 //    public var goalCollectionView: UICollectionView!
     
     private let sectionInsets = UIEdgeInsets(top: 0.0, left: 20, bottom: 10.0, right: 20)
     private let itemsPerRow: CGFloat = 3
     
     public let goals: [String] = ["Swift", "SwiftUI", "iMessage", "HealthKit", "CloudKit", "WatchKit"]
+    public let messages: [String] = [
+        "Linguagem de programação que será utilizada no projeto. Ela é simples e eficiente.",
+        "Usaremos para criar a interface gráfica a ser exibida para o usuário.",
+        "Vamos detectar quando o enviarmos um código de confirmação para o usuário.",
+        "Precisamos saber como está a saúde do usuário.",
+        "Vamos manter os dados do aplicativo na núvem.",
+        "De brinde, vamos oferecer uma versão mais simples para Apple Watch."]
     
     
     
@@ -28,6 +37,8 @@ public class GoalViewController: UIViewController {
         
         self.goalView.goalCollectionView.dataSource = self
         self.goalView.goalCollectionView.delegate = self
+        
+//        self.tutorialAlert = TutorialAlert(viewController: self)
         
 //        goalView.goButton.addTarget(self, action: #selector(goGame), for: .touchUpInside)
     }
@@ -81,6 +92,21 @@ public class GoalViewController: UIViewController {
 //            goalCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -40),
 //            goalCollectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.23)
 //        ])
+        
+    }
+    
+    public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // Verificando se o tutorial esta sendo exibido
+        
+        if !self.goalView.tutorialAlert.isHidden {
+//            print("Exibindo o tutorial")
+            self.goalView.hideOtherElementsForTheTutorial(hidden: false, selectedCell: self.selectedCell!)
+        }
+        
+//        guard let touch = touches.first else { return }
+        
+//        let position = touch.location(in: view)
+        
         
     }
 }
@@ -144,6 +170,51 @@ extension GoalViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension GoalViewController: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(goals[indexPath.row])
+//        print(goals[indexPath.row])
+        
+        self.selectedCell = collectionView.cellForItem(at: indexPath)!
+//
+//        let position = cell?.convert(cell!.frame, to: self.view)
+//
+//        print(position)
+        
+        
+//        print(selectedCell.layer.frame)
+//        let attributes = collectionView.layoutAttributesForItem(at: indexPath)
+//        print(attributes?.frame)
+    
+        
+//        self.tutorialAlert.show(nearTo: selectedCell)
+        
+       /*
+         UICollectionViewLayoutAttributes *attributes = [cv layoutAttributesForItemAtIndexPath:indexPath];
+
+         CGRect cellRect = attributes.frame;
+
+         CGRect cellFrameInSuperview = [cv convertRect:cellRect toView:[cv superview]];
+
+         NSLog(@"%f",cellFrameInSuperview.origin.x);
+         */
+        
+        
+        let attributes = collectionView.layoutAttributesForItem(at: indexPath)
+        let cellRect = attributes?.frame
+        let cellFrameInSuperview = collectionView.convert(cellRect!, to: self.view)
+//        print(cellFrameInSuperview)
+        
+        
+//        self.tutorialAlert.show(cellFrameInSuperview: cellFrameInSuperview)
+        self.goalView.hideOtherElementsForTheTutorial(hidden: true, selectedCell: selectedCell!)
+        
+        self.goalView.tutorialAlert.show(title: self.goals[indexPath.row],
+                                         message: self.messages[indexPath.row],
+                                         cellFrameInSuperview: cellFrameInSuperview)
+        
+        
+        
+        
+//        let myView = UIView(frame: cellFrameInSuperview)
+//        myView.backgroundColor = .blue
+//        self.view.addSubview(myView)
     }
 }
