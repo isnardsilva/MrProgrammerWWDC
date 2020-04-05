@@ -5,9 +5,11 @@ public class GameView: UIView {
     public weak var headerView: UIView!
     public weak var titleLabel: UILabel!
     public weak var timeLeftLabel: UILabel!
+    
     public weak var goalCollectionView: UICollectionView!
     public weak var allTechnologiesCollectionView: UICollectionView!
     
+    public weak var tutorialAlert: TutorialAlert!
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,6 +29,7 @@ public class GameView: UIView {
         setupTimeLeftLabel()
         setupGoalCollectionView()
         setupAllTechnologiesCollectionView()
+        setupTutorialAlert()
     }
     
     
@@ -126,5 +129,14 @@ public class GameView: UIView {
         collectionView.isScrollEnabled = false
         
         self.allTechnologiesCollectionView = collectionView
+    }
+    
+    private func setupTutorialAlert() {
+        let ttAlert = TutorialAlert()
+        self.addSubview(ttAlert)
+        
+        ttAlert.closedButton.isHidden = true
+        
+        self.tutorialAlert = ttAlert
     }
 }

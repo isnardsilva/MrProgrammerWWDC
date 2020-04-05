@@ -4,7 +4,7 @@ public class TutorialAlert: UIView {
     // MARK: - Properties
     private weak var titleLabel: UILabel!
     private weak var messageLabel: UILabel!
-    private weak var closedButton: UIButton!
+    public weak var closedButton: UIButton!
     
     
     
@@ -89,7 +89,7 @@ public class TutorialAlert: UIView {
         self.messageLabel = messageLbl
     }
     
-    public func setupClosedButton() {
+    private func setupClosedButton() {
         let button = UIButton()
         self.addSubview(button)
         
@@ -100,7 +100,7 @@ public class TutorialAlert: UIView {
         NSLayoutConstraint.activate([
             button.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
             button.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5),
-            button.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.17),
+            button.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.15),
             button.widthAnchor.constraint(equalTo: button.heightAnchor)
         ])
         

@@ -60,7 +60,7 @@ public class GameViewController: UIViewController {
         self.gameView.allTechnologiesCollectionView.dataSource = self
         self.gameView.allTechnologiesCollectionView.delegate = self
         
-        self.starTime()
+//        self.starTime()
     }
     
     private func starTime() {
@@ -113,6 +113,33 @@ public class GameViewController: UIViewController {
 //
 //        self.present(alert, animated: true, completion: nil)
 //    }
+    
+    // Ocultando o Tutorial
+    public func hideTutorial() {
+//        print("hideTutorial")
+        
+        self.gameView.tutorialAlert.isHidden = true
+        
+        for index in 0 ..< goals.count {
+            if goals[index] != "Swift" {
+                let indexPath = IndexPath(row: index, section: 0)
+                let cell = self.gameView.goalCollectionView.cellForItem(at: indexPath)
+                cell!.contentView.alpha = 1.0
+            }
+        }
+        
+        
+        for index in 0 ..< allTechnologies.count {
+            if allTechnologies[index] != "Swift" {
+                let indexPath = IndexPath(row: index, section: 0)
+                let cell = self.gameView.allTechnologiesCollectionView.cellForItem(at: indexPath)
+                cell!.contentView.alpha = 1.0
+                cell!.isUserInteractionEnabled = true
+            }
+        }
+        
+        starTime()
+    }
 }
 
 
@@ -177,6 +204,10 @@ extension GameViewController: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GoalViewCell.reuseIdentifier, for: indexPath) as! GoalViewCell
 
             cell.symbolImageView.image = UIImage(named: "Symbols/\(goals[indexPath.row])")
+            
+            if goals[indexPath.row] != "Swift" {
+                cell.contentView.alpha = 0.05
+            }
 
             return cell
         }
@@ -186,7 +217,19 @@ extension GameViewController: UICollectionViewDataSource {
 
 //        cell.backgroundImageView.image = UIImage(named: "TechButtonNormal")
         cell.symbolImageView.image = UIImage(named: "Symbols/\(allTechnologies[indexPath.row])")
-
+        
+        if self.allTechnologies[indexPath.row] != "Swift" {
+            cell.contentView.alpha = 0.05
+            cell.isUserInteractionEnabled = false
+        } else {
+            let attributes = collectionView.layoutAttributesForItem(at: indexPath)
+            let cellRect = attributes?.frame
+            let cellFrameInSuperview = collectionView.convert(cellRect!, to: self.view)
+            self.gameView.tutorialAlert.show(title: "Hora de Trabalhar!",
+                                             message: "Encontre no meio da documentação da Apple as tecnologias que você precisa!",
+                                             cellFrameInSuperview: cellFrameInSuperview)
+        }
+        
         return cell
     }
 }
@@ -198,6 +241,16 @@ extension GameViewController: UICollectionViewDelegate {
 //        print("Touch")
         
         let tecnology = allTechnologies[indexPath.row]
+        
+        
+        // Verificando se a tecnologia tocada e o Swift
+        guard tecnology != "Swift" else {
+            collectionView.cellForItem(at: indexPath)?.contentView.alpha = 0.05
+            self.gameView.goalCollectionView.cellForItem(at: IndexPath(row: 0, section: 0))?.contentView.alpha = 0.05
+            self.goalsAtMoment -= 1
+            self.hideTutorial()
+            return
+        }
         
         for index in 0 ..< goals.count {
             if tecnology == goals[index] {
