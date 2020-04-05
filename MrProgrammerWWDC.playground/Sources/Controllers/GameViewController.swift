@@ -63,16 +63,23 @@ public class GameViewController: UIViewController {
 //        self.starTime()
     }
     
-    private func starTime() {
-        self.timeLeft = 30
+    private func starTime(time: Int) {
+        self.timeLeft = time
+        
+        self.gameView.timeLeftLabel.text = "🗓 \(timeLeft!) dias"
+        self.gameView.timeLeftLabel.textColor = .green
         
         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(onTimerFires), userInfo: nil, repeats: true)
     }
     
     @objc private func onTimerFires() {
-        if timeLeft == 30 {
-            self.gameView.timeLeftLabel.textColor = .green
-        } else if timeLeft == 10 {
+//        if timeLeft! > 10 {
+//            self.gameView.timeLeftLabel.textColor = .green
+//        } else {
+//            self.gameView.timeLeftLabel.textColor = .red
+//        }
+        
+        if timeLeft == 10 {
             self.gameView.timeLeftLabel.textColor = .red
         }
         
@@ -84,10 +91,26 @@ public class GameViewController: UIViewController {
             timer?.invalidate()
             timer = nil
 //            self.showUIAlert(win: false)
-            print("Perdeu")
+//            print("Perdeu")
+            self.showLoseAlert()
         }
     }
     
+    
+    private func showLoseAlert() {
+        let loseAlert = LoseAlert(title: "Fim do prazo!",
+                                  message: "Os objetivos eram difíceis, por isso, o cliente nos deu mais um tempinho de 15 dias!")
+        
+        
+        loseAlert.closeButton.addTarget(self, action: #selector(addMoreTime), for: .touchUpInside)
+        
+        
+        self.present(loseAlert, animated: true, completion: nil)
+    }
+    
+    @objc private func addMoreTime() {
+        self.starTime(time: 15)
+    }
     
     
 //    private func showUIAlert(win: Bool) {
@@ -138,7 +161,7 @@ public class GameViewController: UIViewController {
             }
         }
         
-        starTime()
+        starTime(time: 30)
     }
 }
 
