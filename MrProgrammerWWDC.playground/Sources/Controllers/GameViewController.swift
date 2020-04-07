@@ -14,31 +14,6 @@ public class GameViewController: UIViewController {
     public let allTechnologies: [String] = SymbolData.getAllSymbols()
     private let sectionInsetsAllTechnologies = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
     private let itemsPerRowAllTechnologies: CGFloat = 4
-
-    
-    
-    
-    
-    
-    
-    
-    
-//    private let headerView: UIView = UIView()
-//
-//    private var titleLabel: UILabel!
-//    private var timeLeftLabel: UILabel!
-    
-//    private var tasksCollectionView: UICollectionView!
-//    private var symbolsCollectionView: UICollectionView!
-    
-//    private let sectionInsetsSymbols = UIEdgeInsets(top: 10.0, left: 15, bottom: 10.0, right: 15)
-////    private let sectionInsetsGoals = UIEdgeInsets(top: 0.0, left: 10, bottom: 10.0, right: 10)
-//    private let itemsPerRow: CGFloat = 4
-//    private let numberOfItems: Int = 28
-//
-//    private var symbols: [String] = SymbolData.getAllSymbols()
-//    private var tasks: [String] = SymbolData.getAllSymbols()
-//    private var tasksAtMoment: Int = 4
     
     // Temporizador
     private var timer: Timer?
@@ -59,8 +34,6 @@ public class GameViewController: UIViewController {
         
         self.gameView.allTechnologiesCollectionView.dataSource = self
         self.gameView.allTechnologiesCollectionView.delegate = self
-        
-//        self.starTime()
     }
     
     private func starTime(time: Int) {
@@ -73,11 +46,6 @@ public class GameViewController: UIViewController {
     }
     
     @objc private func onTimerFires() {
-//        if timeLeft! > 10 {
-//            self.gameView.timeLeftLabel.textColor = .green
-//        } else {
-//            self.gameView.timeLeftLabel.textColor = .red
-//        }
         
         if timeLeft == 10 {
             self.gameView.timeLeftLabel.textColor = .red
@@ -90,8 +58,6 @@ public class GameViewController: UIViewController {
         if timeLeft! <= 0 {
             timer?.invalidate()
             timer = nil
-//            self.showUIAlert(win: false)
-//            print("Perdeu")
             self.showLoseAlert()
         }
     }
@@ -111,31 +77,6 @@ public class GameViewController: UIViewController {
     @objc private func addMoreTime() {
         self.starTime(time: 15)
     }
-    
-    
-//    private func showUIAlert(win: Bool) {
-//        let title: String
-//        let message: String
-//
-//        if win {
-//            title = "Parabéns!"
-//            message = "Você conseguiu implementar tudo que o cliente pediu!"
-//        } else {
-//            title = "Fim do prazo!"
-//            message = "Pena que você nao conseguiu entregar esse projeto! Nem sempre um projeto sai como esperavamos! Bola pra frente!"
-//        }
-//
-//
-//        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-//
-//        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { action in
-//            if !win {
-////                self.reloadGame()
-//            }
-//        }))
-//
-//        self.present(alert, animated: true, completion: nil)
-//    }
     
     // Ocultando o Tutorial
     public func hideTutorial() {

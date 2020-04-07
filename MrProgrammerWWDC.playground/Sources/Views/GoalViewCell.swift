@@ -16,18 +16,6 @@ public class GoalViewCell: UICollectionViewCell {
     }
     
     private func setupCell() {
-//        let backgroundIV = UIImageView(frame: .zero)
-//        backgroundIV.translatesAutoresizingMaskIntoConstraints = false
-//        self.contentView.addSubview(backgroundIV)
-//
-//        backgroundIV.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 0).isActive = true
-//        backgroundIV.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 0).isActive = true
-//        backgroundIV.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 0).isActive = true
-//        backgroundIV.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: 0).isActive = true
-//
-//        self.backgroundImageView = backgroundIV
-        
-        
         let symbolIV = UIImageView(frame: .zero)
         symbolIV.translatesAutoresizingMaskIntoConstraints = false
         self.contentView.addSubview(symbolIV)

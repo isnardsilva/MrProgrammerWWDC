@@ -20,13 +20,6 @@ public class LoseAlert: UIViewController {
         self.titleText = title
         self.messageText = message
         
-        /*
-         loseAlert.providesPresentationContextTransitionStyle = true
-         loseAlert.definesPresentationContext = true
-         loseAlert.modalPresentationStyle = .overCurrentContext
-         loseAlert.modalTransitionStyle = .crossDissolve
-         */
-        
         self.providesPresentationContextTransitionStyle = true
         self.definesPresentationContext = true
         self.modalPresentationStyle = .overCurrentContext

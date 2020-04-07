@@ -37,76 +37,14 @@ public class GoalViewController: UIViewController {
         
         self.goalView.goalCollectionView.dataSource = self
         self.goalView.goalCollectionView.delegate = self
-        
-//        self.tutorialAlert = TutorialAlert(viewController: self)
-        
-//        goalView.goButton.addTarget(self, action: #selector(goGame), for: .touchUpInside)
     }
     
-//    // MARK: - Actions
-//    @objc public func goGame() {
-//        print("Go")
-//    }
-    
-//    public override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//
-//        setupCollectionView()
-//    }
-    
-    
-    private func setupCollectionView() {
-        /*
-         tasksCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-         tasksCollectionView.dataSource = self
-         tasksCollectionView.delegate = self
-         tasksCollectionView.register(TaskViewCell.self, forCellWithReuseIdentifier: SymbolViewCell.reuseIdentifier)
-         
-         tasksCollectionView.backgroundColor = .clear
-         
-         self.headerView.addSubview(tasksCollectionView)
-         
-         tasksCollectionView.translatesAutoresizingMaskIntoConstraints = false
-         tasksCollectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true
-         tasksCollectionView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 25).isActive = true
-         tasksCollectionView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -25).isActive = true
-         tasksCollectionView.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 0).isActive = true
-         
-         tasksCollectionView.isScrollEnabled = false
-         tasksCollectionView.isUserInteractionEnabled = false
-         */
-        
-//        goalCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-//        goalCollectionView.dataSource = self
-//        goalCollectionView.delegate = self
-//        goalCollectionView.register(GoalViewCell.self, forCellWithReuseIdentifier: GoalViewCell.reuseIdentifier)
-        
-//        goalCollectionView.backgroundColor = .red
-        
-//        self.view.addSubview(goalCollectionView)
-        
-//        goalCollectionView.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            goalCollectionView.topAnchor.constraint(equalTo: self.goalView.messageLabel.bottomAnchor, constant: 20),
-//            goalCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 40),
-//            goalCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -40),
-//            goalCollectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.23)
-//        ])
-        
-    }
     
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         // Verificando se o tutorial esta sendo exibido
-        
         if !self.goalView.tutorialAlert.isHidden {
-//            print("Exibindo o tutorial")
             self.goalView.hideOtherElementsForTheTutorial(hidden: false, selectedCell: self.selectedCell!)
         }
-        
-//        guard let touch = touches.first else { return }
-        
-//        let position = touch.location(in: view)
-        
         
     }
 }
@@ -117,8 +55,6 @@ public class GoalViewController: UIViewController {
 extension GoalViewController: UICollectionViewDelegateFlowLayout {
     // Informa o tamanho de uma determinada celula
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
-//        let sectionInsets = (collectionView == symbolsCollectionView ? sectionInsetsSymbols : sectionInsetsGoals)
         
         // Espacamento entre cada celula
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
@@ -127,8 +63,6 @@ extension GoalViewController: UICollectionViewDelegateFlowLayout {
         let availableWidth = collectionView.frame.width - paddingSpace
         // Largura de cada celula
         let widthPerItem = availableWidth / itemsPerRow
-
-//        print(widthPerItem)
 
         return CGSize(width: widthPerItem, height: widthPerItem)
     }
@@ -170,38 +104,11 @@ extension GoalViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension GoalViewController: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        print(goals[indexPath.row])
-        
         self.selectedCell = collectionView.cellForItem(at: indexPath)!
-//
-//        let position = cell?.convert(cell!.frame, to: self.view)
-//
-//        print(position)
-        
-        
-//        print(selectedCell.layer.frame)
-//        let attributes = collectionView.layoutAttributesForItem(at: indexPath)
-//        print(attributes?.frame)
-    
-        
-//        self.tutorialAlert.show(nearTo: selectedCell)
-        
-       /*
-         UICollectionViewLayoutAttributes *attributes = [cv layoutAttributesForItemAtIndexPath:indexPath];
-
-         CGRect cellRect = attributes.frame;
-
-         CGRect cellFrameInSuperview = [cv convertRect:cellRect toView:[cv superview]];
-
-         NSLog(@"%f",cellFrameInSuperview.origin.x);
-         */
-        
         
         let attributes = collectionView.layoutAttributesForItem(at: indexPath)
         let cellRect = attributes?.frame
         let cellFrameInSuperview = collectionView.convert(cellRect!, to: self.view)
-//        print(cellFrameInSuperview)
-        
         
 //        self.tutorialAlert.show(cellFrameInSuperview: cellFrameInSuperview)
         self.goalView.hideOtherElementsForTheTutorial(hidden: true, selectedCell: selectedCell!)
@@ -209,12 +116,5 @@ extension GoalViewController: UICollectionViewDelegate {
         self.goalView.tutorialAlert.show(title: self.goals[indexPath.row],
                                          message: self.messages[indexPath.row],
                                          cellFrameInSuperview: cellFrameInSuperview)
-        
-        
-        
-        
-//        let myView = UIView(frame: cellFrameInSuperview)
-//        myView.backgroundColor = .blue
-//        self.view.addSubview(myView)
     }
 }

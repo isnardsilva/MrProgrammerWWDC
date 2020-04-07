@@ -7,7 +7,6 @@ public class GoalView: UIView {
     public weak var goalCollectionView: UICollectionView!
     public weak var timeLabel: UILabel!
     public weak var tutorialAlert: TutorialAlert!
-//    public weak var goButton: UIButton!
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -86,14 +85,6 @@ public class GoalView: UIView {
     }
     
     private func setupTimeMessage() {
-        /*
-         messageLbl.text = "Toque nas tecnologias abaixo \npara saber o que teremos no \nseu primeiro projeto:"
-         messageLbl.font = UIFont.systemFont(ofSize: 19, weight: .medium)
-         messageLbl.textColor = .white
-         messageLbl.textAlignment = .center
-         messageLbl.numberOfLines = 0
-         
-         */
         
         let label = UILabel()
         self.addSubview(label)
@@ -110,59 +101,9 @@ public class GoalView: UIView {
 
         ])
         
-        
-//        let timeView = UIView()
-//        self.addSubview(timeView)
-//
-//        timeView.backgroundColor = .red
-//        timeView.frame.size = CGSize(width: 500, height: 500)
-//
-//        timeView.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            timeView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-//            timeView.centerXAnchor.constraint(equalTo: self.centerXAnchor)
-//
-//        ])
-        
-//        let timeMessage = UIView()
-//        self.addSubview(timeMessage)
-//
-//        timeMessage.frame.size = CGSize(width: 200, height: 200)
-//        timeMessage.backgroundColor = .green
-//
-//        timeMessage.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            timeMessage.topAnchor.constraint(equalTo: self.goalCollectionView.bottomAnchor, constant: 20),
-//            timeMessage.centerXAnchor.constraint(equalTo: self.centerXAnchor)
-//
-//        ])
-        
-//        print("Hello")
-        
         self.timeLabel = label
     }
-    
-//    private func setupGoButton() {
-//        let button = UIButton()
-//        self.addSubview(button)
-//
-//        button.setTitle("GO", for: .normal)
-//        button.setTitleColor(.white, for: .normal)
-//        button.titleLabel?.font = UIFont.systemFont(ofSize: 23, weight: .bold)
-//
-//        button.setBackgroundImage(UIImage(named: "ButtonNormal"), for: .normal)
-//        button.setBackgroundImage(UIImage(named: "ButtonPressed"), for: .highlighted)
-//
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            button.topAnchor.constraint(equalTo: self.timeLabel.bottomAnchor, constant: 40),
-//            button.centerXAnchor.constraint(equalTo: self.centerXAnchor)
-//        ])
-//
-//
-//        self.goButton = button
-//    }
-    
+        
     public func hideOtherElementsForTheTutorial(hidden: Bool, selectedCell: UICollectionViewCell) {
         let newAlpha: CGFloat = (hidden) ? 0.05 : 1.0
         

@@ -25,8 +25,7 @@ public class MessageViewController: UIViewController {
     // MARK: - View Lifecycle
     public override func loadView() {
         super.loadView()
-        
-//        messageView = MessageView()
+
         self.view = MessageView()
         
         // Add textos que serao exibidos na tela

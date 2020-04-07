@@ -8,13 +8,6 @@ public class TaskPageViewController: UIPageViewController {
     public let pageControl = UIPageControl()
     public let goButton = UIButton()
     
-//    public var taskPageView: TaskPageView! {
-//        // Verificando se a View ja foi carregada
-//        guard isViewLoaded else { return nil }
-//
-//        return (view as! TaskPageView)
-//    }
-    
     
     // MARK: - View Lifecycle
     public override func viewDidLoad() {
@@ -22,13 +15,8 @@ public class TaskPageViewController: UIPageViewController {
 
         self.dataSource = self
         self.delegate = self
-        
-        /*
          
-         Você vai integrar a equipe de \niOS Developer junto comigo. \n\nNão se preocupe! Eu vou te \nmostrar como é a rotina \nde um programador em uma \nempresa…
-         */
-         
-        let page1 = MessageViewController(titleMessage: "Hello, Mr. Programmer!",
+        let page1 = MessageViewController(titleMessage: "Olá, Mr. Programmer!",
                                           textMessage: "Me contaram que esse é o\n seu primeiro emprego como\n programador. \n\nGostei do que ouvi sobre suas \nhabilidades…")
         
         let page2 = MessageViewController(titleMessage: "Estaremos juntos!",
@@ -46,9 +34,6 @@ public class TaskPageViewController: UIPageViewController {
     
     private func setupPageControl() {
         // Add Page Control
-//        self.pageControl.frame = .zero
-//        self.pageControl.currentPageIndicatorTintColor = UIColor.black
-//        self.pageControl.pageIndicatorTintColor = UIColor.lightGray
         self.pageControl.numberOfPages = self.pages.count
         self.pageControl.currentPage = initialPage
         self.view.addSubview(self.pageControl)
@@ -58,10 +43,6 @@ public class TaskPageViewController: UIPageViewController {
             self.pageControl.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             self.pageControl.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 200)
         ])
-//        self.pageControl.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -5).isActive = true
-//        self.pageControl.widthAnchor.constraint(equalTo: self.view.widthAnchor, constant: -20).isActive = true
-//        self.pageControl.heightAnchor.constraint(equalToConstant: 20).isActive = true
-//        self.pageControl.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
     }
     
     private func setupGoButton() {
@@ -154,12 +135,8 @@ extension TaskPageViewController: UIPageViewControllerDelegate {
             }
         }
         
-//        print("didFinishAnimating")
     }
     
-//    public func pageViewController(_ pageViewController: UIPageViewController, spineLocationFor orientation: UIInterfaceOrientation) -> UIPageViewController.SpineLocation {
-//        <#code#>
-//    }
     // Executado quando a transicao para outra Page (View Controller) comecar
     public func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
 //        print("willTransitionTo")
@@ -172,22 +149,6 @@ extension TaskPageViewController: UIPageViewControllerDelegate {
             } else {
                 self.goButton.isHidden = true
             }
-//            else {
-//                self.pageControl.isHidden = false
-//            }
-//            print(nextViewController)
-        }
-        
-//        if let viewControllers = pageViewController.viewControllers {
-//            // Pegando o indice da View Controller que vai ser exibida
-//            if let viewControllerIndex = self.pages.firstIndex(of: viewControllers[0]) {
-//
-//                if viewControllerIndex == 2 {
-//                    self.pageControl.isHidden = true
-//                } else {
-//                    self.pageControl.isHidden = false
-//                }
-//            }
-//        }
+        }        
     }
 }

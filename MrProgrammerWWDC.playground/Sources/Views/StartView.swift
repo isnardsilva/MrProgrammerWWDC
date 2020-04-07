@@ -44,7 +44,7 @@ public class StartView: UIView {
         let label = UILabel()
         self.addSubview(label)
         
-        label.text = "Welcome, \n Mr. Programmer"
+        label.text = "Bem-vindo, \n Mr. Programmer"
         label.textAlignment = .center
         label.numberOfLines = 0
         label.textColor = .white

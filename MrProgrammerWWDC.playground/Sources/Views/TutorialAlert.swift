@@ -7,23 +7,6 @@ public class TutorialAlert: UIView {
     public weak var closedButton: UIButton!
     
     
-    
-    
-    //    private var viewController: UIViewController!
-    
-//    init(viewController: UIViewController) {
-//        super.init(frame: CGRect(x: .zero, y: .zero, width: 100, height: 100))
-//        self.backgroundColor = .red
-//
-//
-//        self.isHidden = true
-//        self.viewController = viewController
-//
-//
-//        self.viewController.view.addSubview(self)
-//        setupView()
-//    }
-    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
