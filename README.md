@@ -28,11 +28,11 @@ Mr. Programmer é uma cena interativa que tem por objetivo colocar a pessoa que 
 Esse projeto foi criado para ser enviado para a WWDC Scholarships de 2020, muito embora a conferência tenha sofrido algumas modificações na edição desse ano.
 
 
-## Como jogar?
+## Como Jogar?
 Toque nós ícones das tecnologias que você precisa para o seu projeto antes que o prazo estipulado pelo cliente acabe.
 
 
-## Tecnologias utilizadas
+## Tecnologias Utilizadas
 - Um dos grandes objetivos que eu tinha durante a construção desse projeto consistia no meu aprimoramento com UIKit. Dessa forma, eu me desafiei a criar uma espécie de jogo em cima desse framework.
 
 - Outra habilidade que eu desejava aprimorar era o Auto Layout. Portanto, todo o criação de constraints para ajustar os itens na tela foi feito programaticamente, isto é, sem o uso de Storyboards/Interface Builder.
@@ -46,4 +46,4 @@ Toque nós ícones das tecnologias que você precisa para o seu projeto antes qu
 
 <img alt="License" src="https://img.shields.io/github/license/isnardsilva/MrProgrammerWWDC">
 
-Esse projeto está licenciado sob a licença MIT license. Veja o arquivo [LICENSE](https://github.com/isnardsilva/MrProgrammerWWDC/blob/master/LICENSE) para ter mais informações.
+Esse projeto está licenciado sob a licença MIT License. Veja o arquivo [LICENSE](https://github.com/isnardsilva/MrProgrammerWWDC/blob/master/LICENSE) para ter mais informações.
